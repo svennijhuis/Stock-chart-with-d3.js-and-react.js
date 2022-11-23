@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1e1e1e;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.chart {
+  background-color: #1f234b;
+  color: white;
+}
+
+.candle {
+  stroke-width: 1;
+}
+
+.candle.up {
+  fill: #81dfc4;
+  stroke: #81dfc4;
+}
+
+.candle.down {
+  fill: #d75b6d;
+  stroke: #d75b6d;
+}
+
+.wick {
+  stroke-width: 1.5;
+}
+
+.wick.up {
+  stroke: #81dfc4;
+}
+
+.wick.down {
+  stroke: #d75b6d;
+}
+
+.cross_hair {
+  stroke: white;
+  stroke-opacity: 70%;
+  stroke-dasharray: 3;
+}
+
+
+.sticky-div {
+  position: sticky;
+  top: 80px;
+  left: 0px;
+  padding-left: 18px;
+}
+
+svg {
+	cursor: move;
+  overflow: hidden;
+}
