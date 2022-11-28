@@ -1,59 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 /**
- * Context to know which screen size we are currently in.
+ * This is the context that we use to store all the values from the forms
+ * to make them globally available for all other steps.
  */
 const ScreenContext = createContext(false);
-ScreenContext.displayName = "Screen Size Context";
+ScreenContext.displayName = "Screen Context";
 
 /**
- * Hook to use the screen context.
+ * Hook to use the Stock data context.
  * @returns {React.Context}
  */
 const useScreenContext = () => useContext(ScreenContext);
 
-export { ScreenContext, useScreenContext };
-
 /**
- * Wrapper to make a Provider for the GlobalDataContext.
- * @returns {React.Provider<GlobalDataContext>}
+ * Wrapper to make a Provider for the ScreenContext.
+ * @returns {React.Provider<ScreenContext>}
  */
 const ScreenProvider = ({ children }) => {
-  // const [screenSize, setScreenSize] = useState(null);
-
-  const [screenSize, setScreenSize] = useState(() => {
-    console.log("run");
-    return null;
-  });
+  const [width, setWidth] = useState(null);
+  const [height, setHeight] = useState(null);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1199px)");
 
-    if (mediaQuery.matches) {
-      console.log("Desktop");
-      setScreenSize("desktop");
-    } else {
-      console.log("mobile");
-      setScreenSize("mobile");
-    }
-
-    mediaQuery.addEventListener("change", ({ matches }) => {
-      if (matches) {
-        setScreenSize("desktop");
-        console.log("Desktop");
-      } else {
-        console.log("mobile");
-        setScreenSize("mobile");
-      }
-    });
-  }, []);
+  }, [width, height]);
 
   return (
-    <ScreenContext.Provider value={screenSize}>
+    <ScreenContext.Provider value={{ width, setWidth, height, setHeight }}>
       {children}
     </ScreenContext.Provider>
   );
 };
 
 export default ScreenProvider;
+
+export { ScreenContext, useScreenContext };

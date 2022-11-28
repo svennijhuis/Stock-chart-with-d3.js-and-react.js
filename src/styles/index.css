@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1e1e1e;
+  background-color: #17171a;
 }
 
 code {
@@ -18,8 +18,14 @@ code {
 }
 
 .chart {
-  background-color: #1f234b;
+  background-color: #000;
   color: white;
+  border: #363c4e solid 1px;
+  box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 20%), 0 0.1rem 0.5rem rgb(0 0 0 / 30%),
+    0 0.2rem 1.5rem rgb(0 0 0 / 40%);
+  cursor: move;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .candle {
@@ -54,15 +60,6 @@ code {
   stroke-dasharray: 3;
 }
 
-
-.sticky-div {
-  position: sticky;
-  top: 80px;
-  left: 0px;
-  padding-left: 18px;
-}
-
-svg {
-	cursor: move;
-  overflow: hidden;
+label {
+  cursor: pointer;
 }

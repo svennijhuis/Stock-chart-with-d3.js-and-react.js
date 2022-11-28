@@ -23,7 +23,7 @@ const StockDataProvider = ({ children }) => {
   const [date, setDate] = useState("monthly");
   const [rawData, setRawData] = useState([]);
 
-  const [limit, setLimit] = useState(125);
+  const [limit, setLimit] = useState(70);
 
   const data = useMemo(() => {
     return rawData.slice(0, limit).reverse();

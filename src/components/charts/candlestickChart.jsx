@@ -1,26 +1,20 @@
 import Chart from "./chart";
-import React, { useState, useEffect } from "react";
-import { fetchData } from "../../functions/fetch-stock-data";
-import { TimeButton } from "../navigation/time-button";
+import React from "react";
 import { useStockDataContext } from "../../context/data/stock-data";
 import { NavigationDate } from "../navigation/navigation-date";
+import { useScreenContext } from "../../context/Screen/ScreenProvider";
 
 export const CandleStickChart = () => {
-  const { data, date, stock, dataLimit } = useStockDataContext();
+  const { data } = useStockDataContext();
+  const { width, height } = useScreenContext();
 
-  const chart_width = 1000;
-  const chart_height = 500;
-
-  let bars_displayed = 40;
-  let last_bar_displayed = 0;
+  const chart_width = width;
+  const chart_height = 700;
 
   if (!data) return <div>loading...</div>;
 
   return (
     <>
-      <div className="flex flex-row gap-2">
-      <NavigationDate />
-      </div>
       <Chart data={data} width={chart_width} height={chart_height} />
     </>
   );

@@ -12,15 +12,19 @@ export const LimitNavigation = () => {
 
   return (
     <>
-      <div className="container flex justify-around flex-row mt-6 mb-12">
-        <div>
-          <button onClick={addData} className="underline text-white text-30">
-            +
-          </button>
-          <button onClick={removeData} className="underline text-white text-30">
-            -
-          </button>
-        </div>
+      <div className="absolute top-2 right-2 flex-col flex">
+        <button
+          onClick={addData}
+          className=" text-black bg-white border-2 border-black w-3 h-3 text-30 flex justify-center items-center"
+        >
+          +
+        </button>
+        <button
+          onClick={removeData}
+          className=" text-black bg-white border-2 border-black w-3 h-3 text-30 flex justify-center items-center"
+        >
+          -
+        </button>
       </div>
     </>
   );

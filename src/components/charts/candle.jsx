@@ -1,23 +1,43 @@
 import React from "react";
 import classNames from "classnames";
 
-
-const Candle = ({ data, x, candle_width, pixelFor, className }) => {
+const Candle = ({ data, x, candleWidth, pixelFor, className }) => {
   const up = data.close > data.open;
-  const bar_top = pixelFor(up ? data.close : data.open);
-  const bar_bottom = pixelFor(up ? data.open : data.close);
-  const bar_height = bar_bottom - bar_top;
-  const wick_top = pixelFor(data.hight);
-  const wick_bottom = pixelFor(data.low);
+  const barTop = pixelFor(up ? data.close : data.open);
+  const barBottom = pixelFor(up ? data.open : data.close);
+  const barHeight = barBottom - barTop;
+  const wickTop = pixelFor(data.hight);
+  const wickBottom = pixelFor(data.low);
 
   return (
     <>
       <g className={className}>
+        {/* <g name="Stock-data" x={x - candleWidth / 2} y={barTop}>
+          <rect
+            width="50"
+            height="50"
+            fill="#fff"
+            x={x - candleWidth / 2}
+            y={barTop}
+          />
+          <text
+            font-family="Verdana"
+            font-size="13"
+            fill="#000"
+            x={x - candleWidth / 2}
+            y={barTop + 30}
+          >
+            Date: {data.time}
+            Price top: {data.hight}
+            Price low: {data.low}
+            Price: {data.close}
+          </text>
+        </g> */}
         <rect
-          x={x - candle_width / 2}
-          y={bar_top}
-          width={candle_width}
-          height={bar_height}
+          x={x - candleWidth / 2}
+          y={barTop}
+          width={candleWidth}
+          height={barHeight}
           className={classNames({
             candle: true,
             up: up,
@@ -32,9 +52,9 @@ const Candle = ({ data, x, candle_width, pixelFor, className }) => {
             down: !up,
           })}
           x1={x}
-          y1={bar_top}
+          y1={barTop}
           x2={x}
-          y2={wick_top}
+          y2={wickTop}
         />
         <line
           className={classNames({
@@ -44,9 +64,9 @@ const Candle = ({ data, x, candle_width, pixelFor, className }) => {
             down: !up,
           })}
           x1={x}
-          y1={bar_bottom}
+          y1={barBottom}
           x2={x}
-          y2={wick_bottom}
+          y2={wickBottom}
         />
       </g>
     </>

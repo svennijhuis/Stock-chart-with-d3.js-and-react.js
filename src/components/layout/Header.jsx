@@ -1,4 +1,4 @@
-import { Navigation } from "../navigation/navigation";
+import { Navigation } from "../navigation/navigation-brand";
 import { Slider } from "../slider/slider";
 
 export const Header = () => {

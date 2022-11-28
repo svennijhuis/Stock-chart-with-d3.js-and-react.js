@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 import * as d3 from "d3";
 import gsap from "gsap";
+import { csv, arc, pie, scaleBand, scaleLinear, max } from "d3";
 
 import Candle from "./candle";
 import { CrossHairs } from "./CrossHairs";
@@ -67,50 +68,40 @@ const Chart = (props) => {
   };
 
   // calculate the candle width
-  const candle_width = Math.floor((chart_width / data.length) * 0.7);
-
-  console.log(data.time)
+  const candleWidth = Math.floor((chart_width / data.length) * 0.7);
 
   const app = useRef();
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Target the two specific elements we have asigned the animate class
       gsap.fromTo(
         ".animate",
         { opacity: 0 },
         {
           stagger: 0.03,
-          // repeat: 1,
           duration: 0.03,
           opacity: 1,
         }
       );
-    }, app); // <- Scope!
+    }, app);
 
     return () => ctx.revert();
   }, [data]);
 
-  // const [k, setK] = useState(1);
-  // const [x, setX] = useState(0);
-  // const [y, setY] = useState(0);
-  // useEffect(() => {
-  //   const zoom = d3.zoom().on("zoom", (event) => {
-  //     const { x, y, k } = event.transform;
-  //     setK(k);
-  //     setX(x);
-  //     setY(y);
-  //   });
-  //   d3.select(app.current).call(zoom);
-  // }, []);
+  let yScale = d3
+    .scaleLinear()
+    .domain(d3.extent(data.map((d) => d.hight)))
+    .range([0,chart_height]);
+
+  // let line = d3.line().y((d) => yScale(d.close));
+  // let d = line(data);
+  // console.log(yScale.ticks());
+  yScale.ticks().reverse().map((max) => console.log(yScale(max)));
 
   return (
     <>
       <LimitNavigation />
-      <div className="sticky-div">
-        <p>
-          Mouse: {mouseCoords.x}, {mouseCoords.y}
-        </p>
-        <p>Dollars: ${dollarAt(mouseCoords.y)}</p>
+      <div className="absolute left-2 top-2">
+        <p className="text-white">Dollars: ${dollarAt(mouseCoords.y)}</p>
       </div>
 
       <svg
@@ -128,7 +119,7 @@ const Chart = (props) => {
           return (
             <>
               {i % 5 === 0 && (
-                <LineXaxis key={i + "Line"} x={candle_x} time={data.time} />
+                <LineXaxis key={i + "Line"} x={candle_x} time={bar.time} />
               )}
 
               <Candle
@@ -136,31 +127,39 @@ const Chart = (props) => {
                 key={i}
                 data={bar}
                 x={candle_x}
-                candle_width={candle_width}
+                candleWidth={candleWidth}
                 pixelFor={pixelFor}
               />
             </>
           );
         })}
+        {yScale.ticks().map((max) => (
+          <g
+            transform={`translate(0,${yScale(max)})`}
+            className="text-gray-400"
+            key={max}
+          >
+            <line
+              x1="chart_width"
+              x2={chart_width}
+              stroke="currentColor"
+              strokeDasharray="1,3"
+            />
+            <text
+              alignmentBaseline="middle"
+              className="text-[10px]"
+              fill="currentColor"
+            >
+              {max}
+            </text>
+          </g>
+        ))}
 
         <CrossHairs
           x={mouseCoords.x}
           y={mouseCoords.y}
           chart_dims={chart_dims}
         />
-
-        {/* {xScale.ticks().map((tickValue) => (
-          <g key={tickValue} transform={`translate(${xScale(candle_width)},0)`}>
-            <line y2={chart_height} stroke="black" />
-            <text
-              style={{ textAnchor: "middle" }}
-              dy=".71em"
-              y={chart_height + 3}
-            >
-              {tickValue}
-            </text>
-          </g>
-        ))} */}
       </svg>
     </>
   );
