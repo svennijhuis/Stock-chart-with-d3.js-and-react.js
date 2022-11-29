@@ -11,11 +11,11 @@ export const NavigationDate = () => {
   return (
     <>
       <div className="flex flex-row gap-2">
-        <InputDate time="daily" name="Daily" onChangeValue={onChangeValue} />
-        <InputDate time="weekly" name="Weekly" onChangeValue={onChangeValue} />
+        <InputDate time="DAILY" name="DAILY" onChangeValue={onChangeValue} />
+        <InputDate time="WEEKLY" name="WEEKLY" onChangeValue={onChangeValue} />
         <InputDate
-          time="monthly"
-          name="Monthly"
+          time="MONTHLY"
+          name="MONTHLY"
           onChangeValue={onChangeValue}
         />
       </div>

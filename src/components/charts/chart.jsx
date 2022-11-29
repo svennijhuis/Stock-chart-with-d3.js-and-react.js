@@ -1,8 +1,6 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 import * as d3 from "d3";
 import gsap from "gsap";
-import { csv, arc, pie, scaleBand, scaleLinear, max } from "d3";
-
 import Candle from "./candle";
 import { CrossHairs } from "./CrossHairs";
 import LineXaxis from "./line-xaxis";
@@ -10,6 +8,8 @@ import { LimitNavigation } from "../navigation/limit-button";
 
 const Chart = (props) => {
   const { data, width: chart_width, height: chart_height } = props;
+
+  console.log(data)
 
   const [mouseCoords, setMouseCoords] = useState({
     x: 0,
@@ -90,12 +90,7 @@ const Chart = (props) => {
   let yScale = d3
     .scaleLinear()
     .domain(d3.extent(data.map((d) => d.hight)))
-    .range([0,chart_height]);
-
-  // let line = d3.line().y((d) => yScale(d.close));
-  // let d = line(data);
-  // console.log(yScale.ticks());
-  yScale.ticks().reverse().map((max) => console.log(yScale(max)));
+    .range([0, chart_height]);
 
   return (
     <>
@@ -143,7 +138,7 @@ const Chart = (props) => {
               x1="chart_width"
               x2={chart_width}
               stroke="currentColor"
-              strokeDasharray="1,3"
+              strokeDasharray="3"
             />
             <text
               alignmentBaseline="middle"

@@ -11,7 +11,7 @@ export const CandleStickChart = () => {
   const chart_width = width;
   const chart_height = 700;
 
-  if (!data) return <div>loading...</div>;
+  if (!data.open) return <div>herlaadt over 1 minuut opnieuw we zitten aan de maximaals cals</div>;
 
   return (
     <>
