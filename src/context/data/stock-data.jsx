@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { fetchData } from "../../functions/fetch-stock-data";
+import { fetchDataNews } from "../../functions/fetch-news-data";
 
 /**
  * This is the context that we use to store all the values from the forms
@@ -22,7 +23,7 @@ const StockDataProvider = ({ children }) => {
   const [stock, setStock] = useState("AAPL");
   const [date, setDate] = useState("MONTHLY");
   const [rawData, setRawData] = useState([]);
-
+  const [newsData, setNewsData] = useState([]);
   const [limit, setLimit] = useState(70);
 
   const data = useMemo(() => {
@@ -31,7 +32,6 @@ const StockDataProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData(stock, date).then((data) => {
-      console.log(data);
       const { "Meta Data": metaData, ...rest } = data;
       const timeData = Object.values(rest)[0];
 
@@ -46,11 +46,27 @@ const StockDataProvider = ({ children }) => {
 
       setRawData(dataArray);
     });
+
+    fetchDataNews().then((data) => {
+      setNewsData(data['feed']);
+    });
   }, [stock, date]);
+
+  console.log(newsData)
 
   return (
     <StockDataContext.Provider
-      value={{ stock, setStock, date, setDate, limit, setLimit, data }}
+      value={{
+        stock,
+        setStock,
+        date,
+        setDate,
+        limit,
+        setLimit,
+        data,
+        newsData,
+        setNewsData,
+      }}
     >
       {children}
     </StockDataContext.Provider>

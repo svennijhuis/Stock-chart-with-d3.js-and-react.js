@@ -12,27 +12,6 @@ const Candle = ({ data, x, candleWidth, pixelFor, className }) => {
   return (
     <>
       <g className={className}>
-        {/* <g name="Stock-data" x={x - candleWidth / 2} y={barTop}>
-          <rect
-            width="50"
-            height="50"
-            fill="#fff"
-            x={x - candleWidth / 2}
-            y={barTop}
-          />
-          <text
-            font-family="Verdana"
-            font-size="13"
-            fill="#000"
-            x={x - candleWidth / 2}
-            y={barTop + 30}
-          >
-            Date: {data.time}
-            Price top: {data.hight}
-            Price low: {data.low}
-            Price: {data.close}
-          </text>
-        </g> */}
         <rect
           x={x - candleWidth / 2}
           y={barTop}

@@ -36,14 +36,14 @@ export const Main = () => {
           <div className="col-span-8">
             <StockInformation />
           </div>
-          <div className="col-span-8">
+          <div className="col-span-8 sticky top-8 right-0 left-0 z-10 bg-[#17171a] py-1">
             <div className="grid gap-2">
               <NavigationDate />
             </div>
           </div>
           <section
             ref={svgContainer}
-            className="col-span-8 md:col-span-6 relative"
+            className="col-span-8 md:col-span-6 relative md:mr-3"
           >
             <CandleStickChart />
           </section>

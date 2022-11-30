@@ -8,20 +8,12 @@ export const StockInformation = () => {
     return (open / close) * 100 - 100;
   };
 
-  //   //   const map1 = data.map(x => console.log(x));
-  //   const dataNew = data[data.length];
-  //   console.log(dataNew[0]);
-  //   //  useEffect(() => {
-  //   //     c
-  //   //  }, [dataNew])
-
-  const test = data.length;
+  const length = data.length;
 
   return (
     <>
-      {data.slice(test - 1, test).map((x) => (
+      {data.slice(length - 1, length).map((x) => (
         <>
-          {" "}
           <div className="flex flex-row gap-2">
             <h3 className="text-white text-25 font-bold">{stock}</h3>
             <div
@@ -35,7 +27,7 @@ export const StockInformation = () => {
               </h4>
             </div>
           </div>
-          <p className="text-white text-18 mt-1">{x.time}</p>{" "}
+          <p className="text-white text-18 mt-1">{x.time}</p>
         </>
       ))}
     </>

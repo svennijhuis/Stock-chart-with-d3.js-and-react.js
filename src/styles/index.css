@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 }
 
 code {
@@ -27,7 +27,6 @@ code {
   border: #363c4e solid 1px;
   box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 20%), 0 0.1rem 0.5rem rgb(0 0 0 / 30%),
     0 0.2rem 1.5rem rgb(0 0 0 / 40%);
-  cursor: move;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -66,4 +65,9 @@ code {
 
 label {
   cursor: pointer;
+}
+
+.hover-card:hover h2 {
+ text-decoration: underline;
+ transition: 0.3s;
 }
