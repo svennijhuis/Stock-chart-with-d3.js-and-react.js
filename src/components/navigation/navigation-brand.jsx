@@ -1,5 +1,4 @@
-import { CircleButton, InputBrand } from "./input-brand";
-import { useState } from "react";
+import { InputBrand } from "./input-brand";
 import { useStockDataContext } from "../../context/data/stock-data";
 import { Apple } from "../../images/icons/apple";
 import { Google } from "../../images/icons/google";
@@ -7,18 +6,13 @@ import { Amazon } from "../../images/icons/amazon";
 import { Tesla } from "../../images/icons/tesla";
 
 export const Navigation = () => {
-  const { setStock, stock } = useStockDataContext();
+  const { setStock } = useStockDataContext();
 
   const onChangeValue = (event) => {
     setStock(event.target.value);
     console.log(event.target.value);
 
   };
-
-
-
-
-
 
   return (
     <>

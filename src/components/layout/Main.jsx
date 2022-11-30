@@ -26,7 +26,7 @@ export const Main = () => {
     window.addEventListener("resize", getSvgContainerSize);
     // cleanup event listener
     return () => window.removeEventListener("resize", getSvgContainerSize);
-  }, []);
+  });
 
   return (
     <>

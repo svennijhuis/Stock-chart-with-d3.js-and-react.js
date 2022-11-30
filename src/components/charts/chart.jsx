@@ -20,15 +20,6 @@ const Chart = (props) => {
     dollar_delta: dollar_high - dollar_low,
   };
 
-  const dollarAt = (pixel) => {
-    const dollar =
-      (Math.abs(pixel - chart_dims.pixel_height) / chart_dims.pixel_height) *
-        chart_dims.dollar_delta +
-      chart_dims.dollar_low;
-
-    return pixel > 0 ? dollar.toFixed(2) : "-";
-  };
-
   const pixelFor = (dollar) => {
     return Math.abs(
       ((dollar - chart_dims["dollar_low"]) / chart_dims["dollar_delta"]) *

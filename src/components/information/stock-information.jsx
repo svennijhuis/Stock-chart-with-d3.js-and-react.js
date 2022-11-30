@@ -1,5 +1,4 @@
 import { useStockDataContext } from "../../context/data/stock-data";
-import { useEffect } from "react";
 
 export const StockInformation = () => {
   const { data, stock } = useStockDataContext();
