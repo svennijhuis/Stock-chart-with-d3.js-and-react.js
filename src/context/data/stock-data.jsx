@@ -31,6 +31,9 @@ const StockDataProvider = ({ children }) => {
   }, [rawData, limit]);
 
   useEffect(() => {
+    fetchDataNews().then((data) => {
+      setNewsData(data["feed"]);
+    });
     fetchData(stock, date).then((data) => {
       const { "Meta Data": metaData, ...rest } = data;
       const timeData = Object.values(rest)[0];
@@ -46,13 +49,7 @@ const StockDataProvider = ({ children }) => {
 
       setRawData(dataArray);
     });
-
-    fetchDataNews().then((data) => {
-      setNewsData(data['feed']);
-    });
   }, [stock, date]);
-
-  console.log(newsData)
 
   return (
     <StockDataContext.Provider

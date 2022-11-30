@@ -19,13 +19,13 @@ export const CardNews = () => {
   return (
     <>
       <article className="flex flex-col gap-4 mt-12 md:mt-0">
-        {newsData.slice(0, 4).map((data) => (
-          <a className="flex flex-col hover-card" href={data.url}>
+        {newsData.slice(0, 4).map((data, index) => (
+          <a className="flex flex-col hover-card" href={data.url} key={data.title + index}>
             <h2 className="text-white font-bold text-18">{data.title}</h2>
             <p className="text-white font-light text-10 mb-2">{data.source}</p>
             <div className="flex flex-wrap gap-1 flex-row">
-              {data.topics.map((x) => (
-                <p className="text-white text-13 px-1 py-[0.5px] border-[0.5px] w-fit rounded-3xl ">
+              {data.topics.map((x, index) => (
+                <p key={x.topic + index + data.title} className="text-white text-13 px-1 py-[0.5px] border-[0.5px] w-fit rounded-3xl ">
                   {x.topic}
                 </p>
               ))}

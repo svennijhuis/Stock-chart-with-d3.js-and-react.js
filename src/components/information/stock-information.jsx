@@ -12,9 +12,9 @@ export const StockInformation = () => {
 
   return (
     <>
-      {data.slice(length - 1, length).map((x) => (
+      {data.slice(length - 1, length).map((x, index) => (
         <>
-          <div className="flex flex-row gap-2">
+          <div key={x.time + index + x.open} className="flex flex-row gap-2">
             <h3 className="text-white text-25 font-bold">{stock}</h3>
             <div
               className={`rounded-xl p-[0.5px] w-[100px] flex items-center justify-center  ${
