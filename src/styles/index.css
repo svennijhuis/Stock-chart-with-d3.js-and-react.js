@@ -12,6 +12,10 @@ body {
   background-color: #17171a;
 }
 
+main {
+  margin-bottom: 100px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -8,7 +8,12 @@ export default function LineXaxis({ x, time }) {
         x2={x}
         style={{ strokeWidth: 0.1 }}
       />
-      <text x={x} style={{ textAnchor: "middle" }} dy=".71em" y={700}>
+      <text
+        x={x - 10}
+        transform={`rotate(-60 ${x} 700 )`}
+        style={{ textAnchor: "end", fill: "#fff" }}
+        y={720}
+      >
         {time}
       </text>
     </>
