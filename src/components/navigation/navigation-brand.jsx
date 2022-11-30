@@ -10,8 +10,6 @@ export const Navigation = () => {
 
   const onChangeValue = (event) => {
     setStock(event.target.value);
-    console.log(event.target.value);
-
   };
 
   return (

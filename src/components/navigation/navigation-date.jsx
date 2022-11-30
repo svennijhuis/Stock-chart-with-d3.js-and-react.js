@@ -5,7 +5,6 @@ export const NavigationDate = () => {
 
   const onChangeValue = (event) => {
     setDate(event.target.value);
-    console.log(event.target.value);
   };
 
   return (

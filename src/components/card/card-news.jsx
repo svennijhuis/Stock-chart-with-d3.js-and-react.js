@@ -3,7 +3,6 @@ import { Loading } from "../loading/loading";
 
 export const CardNews = () => {
   const { newsData } = useStockDataContext();
-  console.log(newsData);
 
   if (!newsData)
     return (
