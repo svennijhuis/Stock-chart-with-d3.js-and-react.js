@@ -5,6 +5,7 @@ import { CandleStickChart } from "../charts/candlestickChart";
 import { useRef, useEffect } from "react";
 import { useScreenContext } from "../../context/Screen/ScreenProvider";
 import { NavigationDate } from "../navigation/navigation-date";
+import { StockInformation } from "../information/stock-information";
 
 export const Main = () => {
   const svgContainer = useRef(null);
@@ -26,17 +27,24 @@ export const Main = () => {
     // cleanup event listener
     return () => window.removeEventListener("resize", getSvgContainerSize);
   }, []);
+
   return (
     <>
       <Header />
       <main>
         <div className="container grid grid-cols-8 gap-3">
           <div className="col-span-8">
+            <StockInformation />
+          </div>
+          <div className="col-span-8">
             <div className="grid gap-2">
               <NavigationDate />
             </div>
           </div>
-          <section ref={svgContainer} className="col-span-8 md:col-span-6 relative">
+          <section
+            ref={svgContainer}
+            className="col-span-8 md:col-span-6 relative"
+          >
             <CandleStickChart />
           </section>
           <section className="col-span-8 md:col-span-2">

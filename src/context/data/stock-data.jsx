@@ -20,7 +20,6 @@ const useStockDataContext = () => useContext(StockDataContext);
  */
 const StockDataProvider = ({ children }) => {
   const [stock, setStock] = useState("AAPL");
-  const [news, setNews] = useState("aapl");
   const [date, setDate] = useState("MONTHLY");
   const [rawData, setRawData] = useState([]);
 
@@ -32,7 +31,7 @@ const StockDataProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData(stock, date).then((data) => {
-      console.log(data)
+      console.log(data);
       const { "Meta Data": metaData, ...rest } = data;
       const timeData = Object.values(rest)[0];
 
@@ -48,8 +47,6 @@ const StockDataProvider = ({ children }) => {
       setRawData(dataArray);
     });
   }, [stock, date]);
-
-
 
   return (
     <StockDataContext.Provider
