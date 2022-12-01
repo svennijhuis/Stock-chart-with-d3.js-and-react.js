@@ -19,7 +19,7 @@ export const CardNews = () => {
     <>
       <article className="flex flex-col gap-4 mt-12 md:mt-0">
         {newsData.slice(0, 4).map((data, index) => (
-          <a className="flex flex-col hover-card" href={data.url} key={data.title + index}>
+          <a className="flex flex-col hover-card" href={data.url} target="_blank" key={data.title + index} rel="noreferrer">
             <h2 className="text-white font-bold text-18">{data.title}</h2>
             <p className="text-white font-light text-10 mb-2">{data.source}</p>
             <div className="flex flex-wrap gap-1 flex-row">
