@@ -32,7 +32,7 @@ export const Main = () => {
     <>
       <Header />
       <main>
-        <div className="container grid grid-cols-8 gap-3">
+        <div className="container grid grid-cols-8 gap-3 ">
           <div className="col-span-8">
             <StockInformation />
           </div>
